@@ -84,7 +84,7 @@ west = STRUCT([T([1,2])([29.20,-0.80])(wa_face), T([1,2])([26.08,6.24]), wb_face
 
 # EAST FACE
 
-ea_face = wa_face
+ea_face = T(1)(0.4)(wa_face)
 
 e0a_face = INSL(PROD)([Q(0.4), Q(6.60), Q(2.8)])
 e1a_face = INSL(PROD)([Q(0.4), Q(6.60), Q(1.2)])
