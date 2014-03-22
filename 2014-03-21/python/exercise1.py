@@ -20,15 +20,15 @@ f0a_plan = MKPOL([f0a_plan_vertices,f0a_plan_cells, None])
 # Floor 0 pillars
 
 
-front_pillarsa0_x = QUOTE(p_1dim+([-2.80]+p_1dim)*4+[-6.72]+p_1dim+([-2.80]+p_1dim)*3)
-front_pillarsa0_y = QUOTE(p_1dim+[-5.60,-0.32])
+front_pillars0a_x = QUOTE(p_1dim+([-2.80]+p_1dim)*4+[-6.72]+p_1dim+([-2.80]+p_1dim)*3)
+front_pillars0a_y = QUOTE(p_1dim+[-5.60,-0.32])
 
-rear_pillarsa0_x = QUOTE(p_1dim+[-2.80]+p_1dim+[-25.44]+p_1dim)
-rear_pillarsa0_y = QUOTE([-0.32,-5.60]+p_1dim)
+rear_pillars0a_x = QUOTE(p_1dim+[-2.80]+p_1dim+[-25.44]+p_1dim)
+rear_pillars0a_y = QUOTE([-0.32,-5.60]+p_1dim)
 
-front_pillarsa0 = PROD([front_pillarsa0_x, front_pillarsa0_y])
-rear_pillarsa0 = PROD([rear_pillarsa0_x, rear_pillarsa0_y])
-pillarsa0 = COLOR(p_col)(STRUCT([front_pillarsa0, rear_pillarsa0]))
+front_pillars0a = PROD([front_pillars0a_x, front_pillars0a_y])
+rear_pillars0a = PROD([rear_pillars0a_x, rear_pillars0a_y])
+pillars0a = COLOR(p_col)(STRUCT([front_pillars0a, rear_pillars0a]))
 
 # Floor 0 divider
 
@@ -36,7 +36,7 @@ div0a_wall = COLOR(div_col)(PROD([QUOTE([-16.0,0.32]), Q(2.24)]))
 
 # Floor 0a
 
-floor0a = STRUCT([f0a_plan, pillarsa0, div0a_wall])
+floor0a = STRUCT([f0a_plan, pillars0a, div0a_wall])
 
 '''
 FLOOR0b
@@ -87,7 +87,7 @@ FLOOR0a + FLOOR0b = FLOOR0
 '''
 
 # floor0a = DIFFERENCE([floor0a, floor0b])    # Cut floor0a to fit floor0b
-floor0b = T(3)(1.2)(floor0b)                # Elevate floor0b
+floor0b = T(3)(1.2)(floor0b)                  # Elevate floor0b
 floor0 = STRUCT([floor0a,floor0b])
 
 '''
@@ -102,7 +102,7 @@ f1_plan = STRUCT([f1_plan1,f1_plan2])
 
 # Floor 1 pillars
 
-pillars1_x = front_pillarsa0_x
+pillars1_x = front_pillars0a_x
 pillars1_y = QUOTE(p_1dim+[-5.60]+p_1dim)
 pillars1 = COLOR(p_col)(PROD([pillars1_x, pillars1_y]))
 
@@ -120,7 +120,11 @@ floor1 = STRUCT([f1_plan, pillars1, back_pillars1, div1_wall])
 ROOF
 '''
 
-roof = floor1
+pillars2_x = QUOTE(p_1dim+([-2.80]+p_1dim)*4+[-6.72]+p_1dim+([-2.80]+p_1dim)*3)
+pillars2_y = QUOTE(p_1dim+[-5.60,-0.32])
+pillars2 = COLOR(p_col)(PROD([pillars2_x, pillars2_y]))
+back_pillars2 = back_pillars1
+roof = STRUCT([f1_plan,pillars2,back_pillars2])
 
 '''
 ROOF COVER
@@ -139,7 +143,4 @@ FLOORS
 floors = STRUCT([floor0, T(3)(4.0), floor1, T(3)(4.0), roof, T(3)(3.20), cover])
 building = floors
 
-# VIEW(floors)
-# VIEW(SKEL_1(floor1))
-# VIEW(SKEL_1(floor0))
-# VIEW(SKEL_1(floors))
+VIEW(building)

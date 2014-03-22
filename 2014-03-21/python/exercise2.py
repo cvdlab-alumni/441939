@@ -71,13 +71,12 @@ eb_face = STRUCT([T(3)(1.2),e0a_face,
 ec_face = T(1)(16.40)(eb_face)
 
 east = STRUCT([T(2)(-0.80)(ea_face), T([1,2])([6.24,6.24]),eb_face,ec_face])
-VIEW(east)
 
 # Mockup 3D
 
 mock_up_3D = STRUCT([building,north,south,west,east])
 
 # VIEW(SKEL_1(north))
-VIEW(mock_up_3D)
-VIEW(SKEL_1(mock_up_3D))
+# VIEW(mock_up_3D)
+# VIEW(SKEL_1(mock_up_3D))
 # VIEW(SKEL_1(west))
