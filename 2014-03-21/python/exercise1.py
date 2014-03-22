@@ -36,7 +36,7 @@ div0a_wall = COLOR(div_col)(PROD([QUOTE([-16.0,0.32]), Q(2.24)]))
 
 # Floor 0a
 
-floor0a = STRUCT([SKEL_2(f0a_plan), pillarsa0, div0a_wall])
+floor0a = STRUCT([f0a_plan, pillarsa0, div0a_wall])
 
 '''
 FLOOR0b
@@ -126,20 +126,20 @@ roof = floor1
 ROOF COVER
 '''
 
-cover1 = T(2)(-1.20)(PROD([Q(29.20),Q(2.60)]))
-cover2 = T(2)(-2.32)(PROD([QUOTE([-6.24,3.44,-12.96,3.44]),QUOTE([-6.24,6.60+2.32])]))
+cover1 = T(2)(-0.80)(PROD([Q(29.20),Q(2.60)]))
+cover2 = PROD([QUOTE([-6.24,3.44,-12.96,3.44]),QUOTE([-4.40,6.60+1.84])])
 support = [0.32,-2.80,0.32]
-cover3 = PROD([QUOTE([-6.24]+support+[-12.96]+support),QUOTE([-1.40,3.92-1.40])])
+cover3 = PROD([QUOTE([-6.24]+support+[-12.96]+support),QUOTE([-1.80,2.60])])
 cover = STRUCT([cover1, cover2, cover3])
 
 '''
 FLOORS
 '''
 
-floors = STRUCT([floor0, T(3)(3.80), floor1, T(3)(3.80), roof, T(3)(3.20), cover])
+floors = STRUCT([floor0, T(3)(4.0), floor1, T(3)(4.0), roof, T(3)(3.20), cover])
 building = floors
 
-VIEW(floors)
+# VIEW(floors)
 # VIEW(SKEL_1(floor1))
 # VIEW(SKEL_1(floor0))
 # VIEW(SKEL_1(floors))
