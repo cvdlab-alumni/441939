@@ -6,6 +6,7 @@ n1a_face = INSL(PROD)([Q(29.2), Q(0), Q(1.20)])
 n1b_face = INSL(PROD)([QUOTE([0.40,-28.4,0.40]), Q(0), QUOTE([-1.20,1.40])])
 n1c_face = INSL(PROD)([Q(29.2), Q(0), QUOTE([-2.60,1.40])])
 n2a_face = INSL(PROD)([Q(29.2), Q(0), QUOTE([-4.0,1.20])])
+
 na_face = STRUCT([T([2,3])([-0.80,4.0]), n1a_face, n1b_face,n1c_face,n2a_face])
 
 nb_face = T([2,3])([4.4,8.0])(INSL(PROD)([QUOTE([-6.24,3.44,-12.96,3.44]),Q(0),Q(3.2)]))
@@ -76,7 +77,4 @@ east = STRUCT([T(2)(-0.80)(ea_face), T([1,2])([6.24,6.24]),eb_face,ec_face])
 
 mock_up_3D = STRUCT([building,north,south,west,east])
 
-# VIEW(SKEL_1(north))
-# VIEW(mock_up_3D)
-# VIEW(SKEL_1(mock_up_3D))
-# VIEW(SKEL_1(west))
+VIEW(mock_up_3D)
