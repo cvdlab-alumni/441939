@@ -1,6 +1,5 @@
 from exercise3 import *
 
-#first type ramp
 l = 0.30;
 h = 0.20;
 unit = MKPOL([[[0,0],[0,0.1+h],[l,h],[l,0.1+h]],[[1,2,3,4]],None])
