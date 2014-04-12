@@ -4,7 +4,7 @@ from exercise3 import *
 TRUNKCOL = [0.32,0.20,0.04]
 LAMPCOL = p_col
 LAMPCROWCOL = [0.8,0.8,0.8]
-CROWNCOL = GRASSCOL
+CROWNCOL = [0,0.5,0.1]
 BULBCOL = YELLOW
 WATER = BLUE
 
@@ -41,7 +41,6 @@ def ACQUARIUM(size,th):
 	acquarium = STRUCT([DIFFERENCE([base,hole]),water,water_surface])
 	return acquarium
 
-
 tree = TREE1(0.10,3,25,1.5,16,16)
 trees = STRUCT([T([1,2])([-13,-18]),tree] + NN(11)([T(1)(6), tree]))
 
@@ -50,6 +49,10 @@ lamps = STRUCT([T([1,2])([-13,-7]),lamp] + NN(11)([T(1)(6), lamp]))
 
 acquarium = T([1,2])([35,-2-0.1])(ACQUARIUM([6,2,1.2],0.1))
 
-district = STRUCT([estate,trees, lamps,acquarium])
+graden_trees = STRUCT([T([1,2,3])([33,5,4+0.08]),tree] + NN(5)([T(1)(4), tree]))
+
+big_tree = T([1,2,3])([29.20+0.5,20,4])(TREE1(0.20,5,25,3,16,16))
+
+district = STRUCT([estate,trees, lamps,acquarium,graden_trees,big_tree])
 
 VIEW(district)

@@ -188,4 +188,4 @@ east = STRUCT([east,door2, e1_windows, T([1,2,3])([6.24,6.24,5.2]), e2_windows, 
 
 faces = STRUCT([north, curved, south, west,east])
 weissenhof = STRUCT([floors, faces])
-# VIEW(weissenhof)
+VIEW(weissenhof)

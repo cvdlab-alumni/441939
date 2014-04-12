@@ -220,4 +220,4 @@ cover = EXTRUDE(-0.4)(cover)
 
 ''' 3D FLOORS '''
 floors = STRUCT([floor0,T(3)(4.0),floor1,T(3)(4.0),roof, T(3)(3.2)(cover)])
-# VIEW(floors)
+VIEW(floors)
