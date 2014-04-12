@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CVDLAB - Computer Graphics Homework 2</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#code">Code</a></li>
+        </ul>
+        <h2 class="text-muted">CVDLAB Computer Graphics</h2>
+      </div>
+
+      <hr style="margin-top: 26px; margin-bottom: 40px;">
+
+      <div class="row">
+
+        <div class="col-sm-8">
+
+          <h1><b>Weissenhof House</b> <small>Le Corbusier</small></h1>
+          <h4>by Pacquing Paul Kristian Dion</h4>
+
+          <br>
+          <br>
+          <img src="http://openhousebcn.files.wordpress.com/2012/01/stuttgart-weissenhofsiedlung-le-corbusier-haus-baden-wuerttemberg.jpg" class="img-responsive" alt="Responsive image">
+          <br>
+
+          <h3 id="description"><b>A short description</b></h3>
+          <hr>
+          <p class="lead">
+            The building was designed by one of the most influencing personality of
+            modern architecture, Le Corbusier. It takes part of the housing estate built for exhibition 
+            in Stuttgart in 1927.
+          </p>
+
+          <h3 id="screenshots"><b>Screenshots</b></h3>
+          <hr>
+          <p class="lead">
+            This is what the <a href="#code">code</a> produces: 
+          </p>
+
+          <br>
+          <div id="carousel-screenshots" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-screenshots" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="1"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="http://farm3.staticflickr.com/2576/3919176668_87c4d26703_o.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Caption 1<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="http://farm3.staticflickr.com/2576/3919176668_87c4d26703_o.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Caption 2<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="http://farm3.staticflickr.com/2576/3919176668_87c4d26703_o.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Caption 3<p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-screenshots" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-screenshots" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+          <br>
+
+          <h3 id="notes"><b>Notes</b></h3>
+          <hr>
+          <p class="lead">
+            Something about implementation!
+          </p>
+
+          <h3 id="references"><b>References</b></h3>
+          <hr>
+          <p class="lead">
+            All the documentations and references gathered from the web that helped me to
+            realize the 2D/3D models are listed below:
+          </p>
+          <ul>
+            <li><a href="http://www.stuttgart.de/weissenhof/index.php?objecttype=item&id=182434&subsection=182437"><span class="lead">Stuttgart Museum</span></a></li>
+            <li><a href="http://www.archweb.it/dwg/arch_arredi_famosi/Le_corbusier/casa_weisenhof/weissenhof_2_2d.htm"><span class="lead">Archweb</span></a></li>
+            <li><a href="https://3dwarehouse.sketchup.com/model.html?id=3ef5b56f85948136e5a0071c0058f1c2"><span class="lead">Sketchup</span></a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Weissenhof_Estate"><span class="lead">Wikipedia</span></a></li>
+            <li><a href="http://www.greatbuildings.com/cgi-bin/gbc-drawing.cgi/Weissenhof_Row_Houses.html/Weissenhof_Site_Plan.html"><span class="lead">GreatBuildings</span></a></li>
+            
+          </ul>
+
+          <h3 id="code"><b>Source code</b></h3>
+          <hr>
+          <p class="lead">
+            You can download the python source code from the following links: 
+          </p>
+          <ul>
+            <li><a href="python/exercise1.py"><span class="lead">Exercise 1</span></a></li>
+            <li><a href="python/exercise2.py"><span class="lead">Exercise 2</span></a></li>
+            <li><a href="python/exercise3.py"><span class="lead">Exercise 3</span></a></li>
+            <li><a href="python/exercise4.py"><span class="lead">Exercise 4</span></a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+          <div class="list-group affix">
+            <a href="#" class="list-group-item active"><b>Sections</b></a>
+            <a href="#description" class="list-group-item">A short description</a>
+            <a href="#screenshots" class="list-group-item">Screenshots</a>
+            <a href="#notes" class="list-group-item">Notes</a>
+            <a href="#references" class="list-group-item">References</a>
+            <a href="#code" class="list-group-item">Source code</a>
+            <a href="#" class="list-group-item active"><b>About me</b></a>
+            <a href="#" class="list-group-item">Pacquing Paul Kristian Dion</a>
+            <a href="#" class="list-group-item">Student ID: 441939</a>
+            <a href="mailto:kristian.pacquing@gmail.com" class="list-group-item">
+              <span class="text-info"><b>Email me</b></span>
+            </a> 
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin-top: 100px;">
+
+      <div class="footer" style="margin-bottom: 65px;">
+        <p>&copy; CVDLAB Computer Graphics - Pacquing Paul Kristian Dion</p>
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
