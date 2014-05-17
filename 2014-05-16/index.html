@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CVDLAB - Computer Graphics Homework 3</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#screenshots">Screenshots</a></li>
+          <li><a href="#code">Code</a></li>
+        </ul>
+        <h2 class="text-muted">CVDLAB Computer Graphics</h2>
+      </div>
+
+      <hr style="margin-top: 26px; margin-bottom: 40px;">
+
+      <div class="row">
+
+        <div class="col-sm-8">
+
+          <h1><b>My apartment</b></h1>
+          <h4>by Pacquing Paul Kristian Dion</h4>
+
+          <br>
+          <br>
+
+          <h3 id="description"><b>A short description</b></h3>
+          <hr>
+          <p class="lead">
+            The apartment has 2 bedrooms, 1 bathroom, 1 chicken and a (L shaped)
+            hallway.
+          </p>
+
+          <h3 id="screenshots"><b>Screenshots</b></h3>
+          <hr>
+          <p class="lead">
+            This is what the <a href="#code">code</a> produces: 
+          </p>
+
+          <br>
+          <div id="carousel-screenshots" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-screenshots" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="1"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="2"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="3"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="4"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="5"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="6"></li>
+              <li data-target="#carousel-screenshots" data-slide-to="7"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="images/apartment.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Apartment<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/apartment_skeleton.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Apartment skeleton<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/landing.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Landing<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/ramp.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Ramp<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/open.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Open building<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/building.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Building<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/details.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">With more details<p>
+                </div>
+              </div>
+              <div class="item">
+                <img src="images/building_skeleton.jpg" class="img-responsive img-rounded" alt="Responsive image">
+                <div class="carousel-caption">
+                  <p class="lead">Building skeleton<p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-screenshots" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-screenshots" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+          <br>
+
+          <h3 id="notes"><b>Notes</b></h3>
+          <hr>
+          <p class="lead">
+            The building is implemented as a replication of the apartment through 4 floors.
+            A landing enhances communication between side A (the original apartment) and side B (a mirrored apartment with respect to side A). <br>
+            Some primitives (such as tree, stair ecc..) are taken and reused from former homeworks (expecially the second one). <br>
+            The project is meant to be highly modular and parametric.
+          </p>
+
+          <h3 id="code"><b>Source code</b></h3>
+          <hr>
+          <p class="lead">
+            You can download the python source code from the following links: 
+          </p>
+          <ul>
+            <li><a href="python/exercise1.py"><span class="lead">Exercise 1</span></a></li>
+            <li><a href="python/exercise2.py"><span class="lead">Exercise 2</span></a></li>
+            <li><a href="python/exercise3.py"><span class="lead">Exercise 3</span></a></li>
+            <li><a href="python/exercise4.py"><span class="lead">Exercise 4</span></a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-3 col-sm-offset-1">
+          <div class="list-group affix">
+            <a href="#" class="list-group-item active"><b>Sections</b></a>
+            <a href="#description" class="list-group-item">A short description</a>
+            <a href="#screenshots" class="list-group-item">Screenshots</a>
+            <a href="#notes" class="list-group-item">Notes</a>
+            <a href="#code" class="list-group-item">Source code</a>
+            <a href="#" class="list-group-item active"><b>About me</b></a>
+            <a href="#" class="list-group-item">Pacquing Paul Kristian Dion</a>
+            <a href="#" class="list-group-item">Student ID: 441939</a>
+            <a href="mailto:kristian.pacquing@gmail.com" class="list-group-item">
+              <span class="text-info"><b>Email me</b></span>
+            </a> 
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin-top: 100px;">
+
+      <div class="footer" style="margin-bottom: 65px;">
+        <p>&copy; CVDLAB Computer Graphics - Pacquing Paul Kristian Dion</p>
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
