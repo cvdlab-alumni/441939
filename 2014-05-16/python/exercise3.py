@@ -1,6 +1,6 @@
 from larcc import *
 
-def multipleDiagram2cell(diagram,master,toRemove,toMerges):
+def mergeNumberEliminateLoop(diagram,master,toRemove,toMerges):
 	V,CV = diagram
 	# Remove specified cells in toRemove from diagram first
 	diagram = V,[cell for k,cell in enumerate(CV) if not (k in toRemove)]
