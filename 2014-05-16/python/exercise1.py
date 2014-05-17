@@ -133,5 +133,5 @@ master = removeCells(toRemove,master)
 
 ''' VIEWS '''
 
-# VIEW(draw(master))
-# VIEW(addCellNumbers(master))
+VIEW(draw(master))
+VIEW(addCellNumbers(master))

@@ -229,4 +229,4 @@ building = STRUCT([
 	COLOR(light_red)(top)
 	])
 VIEW(building)
-# VIEW(addCellNumbers(master,RED))
+VIEW(addCellNumbers(master,RED))
