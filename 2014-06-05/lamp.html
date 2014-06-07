@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>PIXAR Lamp</title> 
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #stats {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    #startButton {
+      position: absolute;
+      left: 70%;
+      top: 50%;
+      display: block;
+      background-color: #F7F7F7;
+      background-image: -moz-linear-gradient(center top , #F7F7F7, #E7E7E7);
+      color: #A7A7A7;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      line-height: 144px;
+      border-radius: 50%;
+      box-shadow: 0px 6px 16px 10px #AAA, 0px 2px 3px 10px #FFF inset;
+      text-decoration: none;
+      color: #6C6C6C;
+    }    
+  </style> 
+  </head> 
+  <body>
+    <div id="webgl"></div>
+    <div id="stats"></div>
+
+    <!-- JavaScript libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/three.min.js"></script> 
+    
+    <script src="js/Stats.min.js"></script>
+    <script src="js/dat.gui.min.js"></script>
+    <script src="js/TrackballControls.js"></script>
+    <script src="js/tween.min.js"></script>
+    <script src="fonts/helvetiker_regular.typeface.js"></script>
+
+    <script src="js/lampConstants.js"></script>
+    <script src="js/lampMaterials.js"></script>
+    <script src="js/lampPropMakers.js"></script>
+    <script src="js/lampSceneMaker.js"></script>
+    <script src="js/lampAnimations.js"></script>
+    <script src="js/lampControls.js"></script>
+    <script>
+      $(function () {
+
+        // add the output of the renderer to the html element
+        $('#webgl').append(renderer.domElement);
+
+        render();
+
+        function render() {
+          stats.update();
+          trackball.update();
+          TWEEN.update();
+
+          requestAnimationFrame(render);
+          renderer.render(scene, camera);
+        }
+
+      });
+    </script>  
+
+    <a id="startButton" href="javascript:void(0);" onclick="startAnimation();"><b>START</b></a>
+ </body>
+</html>
