@@ -133,7 +133,7 @@ function makeBulbLight(obj, target) {
   bulbLight.shadowCameraFar = PLANE_H+PLANE_W;
   bulbLight.shadowBias = 0.0001;
   bulbLight.shadowDarkness = 0.5;
-  bulbLight.shadowCameraFov = 2*180 * BULB_LIGHT_A / PI;
+  bulbLight.shadowCameraFov = 180 * BULB_LIGHT_A / PI;
 
   bulbLight.target = target;
   bulbLight.position.set(0,0,BULB_R/2);

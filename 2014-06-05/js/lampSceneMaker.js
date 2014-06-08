@@ -45,10 +45,15 @@ var obj = makeObj(OBJ_L);
 obj.position.set(-PLANE_W/4, -PLANE_H/4, OBJ_L/2);
 scene.add(obj);
 
-var text = makeText('P i x a r');
+var text = makeText('P   x a r');
 text.rotation.x = PI/2;
 text.position.set(-PLANE_W*3/8,PLANE_H*5/8, 1.2);
 scene.add(text);
+
+var iText = makeText('   i');
+iText.rotation.x = PI/2;
+iText.position.set(-PLANE_W*3/8,PLANE_H*5/8, 1.2);
+scene.add(iText);
 
 /* ---------- Create lamp structure ---------- */
 
