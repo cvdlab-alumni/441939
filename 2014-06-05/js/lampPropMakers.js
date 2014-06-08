@@ -8,7 +8,7 @@ function makeHead(r,R,B) {
 
   var shade = makeShade(R);
   var bulb = makeBulb(B);
-  bulb.position.z = R - B;
+  bulb.position.z = R - B - B/4;
   shade.add(bulb);
   shade.position.y = R + r;
   joint.add(shade);
@@ -26,7 +26,7 @@ function makeArm(r,h) {
   var joint = makeJoint(r);
   arm.add(joint);
 
-  var stick = makeStick(r,h);
+  var stick = makeStick(r*0.8,h);
   stick.position.y = h/2 + r;
   joint.add(stick);
 
@@ -42,21 +42,48 @@ function makeArm(r,h) {
 }
 
 function makeBase(r,h) {
-  var baseGeometry = new THREE.CylinderGeometry(r, r, h);
+  var baseGeometry = new THREE.CylinderGeometry(r, r, h, 32);
   var base = new THREE.Mesh(baseGeometry, baseMaterial);
   base.castShadow = true;
   return base;
 }
 
 function makeBulb(B) {
-  var bulbGeometry = new THREE.SphereGeometry(B);
-  var bulb = new THREE.Mesh(bulbGeometry, bulbMaterial);
+  var bulbGeometry = new THREE.SphereGeometry(B,32,32);
+  var bulb = new THREE.Mesh(bulbGeometry);
   bulb.castShadow = true;
+
+  var bulbIn = bulb.clone();
+  bulbIn.scale.set(0.95,0.95,0.95);
+
+  // BOOLEAN OPERATION
+  var c1 = new ThreeBSP(bulb);
+  var c2 = new ThreeBSP(bulbIn);
+  var sub = c1.subtract(c2);
+  bulb = sub.toMesh(bulbMaterial);
+
+  var bulbBaseGeometry = new THREE.CylinderGeometry(B/2,B/3,B/2,32);
+  var bulbBase = new THREE.Mesh(bulbBaseGeometry, bulbBaseMaterial);
+  bulbBase.castShadow = true;
+  bulbBase.position.z = B+B/4;
+  bulbBase.rotation.x = -PI/2;
+  bulb.add(bulbBase);
+
+  var bulbWireGeometry = new THREE.OctahedronGeometry(B/2);
+  var bulbWire = new THREE.Mesh(bulbWireGeometry, bulbWireMaterial);
+  bulb.add(bulbWire);
+
+  var bulbCylinderGeometry = new THREE.CylinderGeometry(B/8,B/8,B,32);
+  var bulbWireCylinder = new THREE.Mesh(bulbCylinderGeometry, bulbWireMaterial);
+  bulbWireCylinder.position.z = B/2;
+  bulbWireCylinder.rotation.x = -PI/2;
+  bulb.add(bulbWireCylinder);
+
   return bulb;
 }
 
 function makeShade(R) {
-  var shadeGeometry = new THREE.SphereGeometry(R,50,50,0,PI);
+  var shadeGeometry = new THREE.SphereGeometry(R,32,32,0,PI);
   shadeMaterial.side = THREE.DoubleSide;
   var shade = new THREE.Mesh(shadeGeometry, shadeMaterial);
   shade.castShadow = true;
@@ -65,14 +92,14 @@ function makeShade(R) {
 }
 
 function makeStick(r,h) {
-  var stickGeometry = new THREE.CylinderGeometry(r,r,h);
+  var stickGeometry = new THREE.CylinderGeometry(r,r,h,32);
   var stick = new THREE.Mesh(stickGeometry, stickMaterial);
   stick.castShadow = true;
   return stick;
 }
 
 function makeJoint(r) {
-  var jointGeometry = new THREE.SphereGeometry(r);
+  var jointGeometry = new THREE.SphereGeometry(r,32,32);
   var joint = new THREE.Mesh(jointGeometry, jointMaterial);
   joint.castShadow = true;
   return joint;
@@ -88,21 +115,7 @@ function makeObj(L) {
 function makeMainLight(target) {
   var directionalLight = new THREE.DirectionalLight( DIRECTIONAL_COLOR );
   directionalLight.intensity = DIRECTIONAL_INTENSITY;
-
-  // directionalLight.castShadow = true;
-  // directionalLight.shadowMapWidth = SHADOWMAP;
-  // directionalLight.shadowMapHeight = SHADOWMAP;
-  // directionalLight.shadowBias = 0.0001;
-  // directionalLight.shadowDarkness = 0.5;
-  // directionalLight.shadowCameraNear = SHADE_R;
-  // directionalLight.shadowCameraFar = PLANE_H+PLANE_W;
-  // directionalLight.shadowCameraTop = (PLANE_H+PLANE_W)/2;
-  // directionalLight.shadowCameraBottom = -(PLANE_H+PLANE_W)/2;
-  // directionalLight.shadowCameraLeft = -(PLANE_H+PLANE_W)/2;
-  // directionalLight.shadowCameraRight = (PLANE_H+PLANE_W)/2;
-
   directionalLight.target = target;
-
   return directionalLight;
 }
 
@@ -129,17 +142,32 @@ function makeBulbLight(obj, target) {
   return bulbLight;
 }
 
+function makeBackBulbLight(obj, target, a, b) {
+  // bulb light
+  var backBulbLight = new THREE.SpotLight( BULB_LIGHT_COLOR );
+  backBulbLight.intensity = POINT_LIGHT_INTENSITY;
+  backBulbLight.angle = PI/6;
+  backBulbLight.distance = BULB_R;
+  backBulbLight.castShadow = false;
+
+  backBulbLight.target = target;
+  backBulbLight.position.set(a*BULB_R/2,b*BULB_R/2,-BULB_R/2);
+  obj.add(backBulbLight);
+
+  return backBulbLight;
+}
+
 function makePointLight(obj) {
-  var light = new THREE.PointLight( 
+  var pointLight = new THREE.PointLight( 
     BULB_LIGHT_COLOR, 
     POINT_LIGHT_INTENSITY, 
-    BULB_R*1.5
+    SHADE_R*1.05
   );
 
-  light.position.set(0,0,0);
-  obj.add(light);
+  pointLight.position.set(0,0,0);
+  obj.add(pointLight);
 
-  return light;
+  return pointLight;
 }
 
 function makePlane() {

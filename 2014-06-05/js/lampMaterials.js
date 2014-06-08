@@ -1,8 +1,8 @@
 /* ---------- Prepare materials ---------- */
 
-var planeMaterial = new THREE.MeshPhongMaterial({
+var planeMaterial = new THREE.MeshLambertMaterial({
 	color: PLANE_COLOR, 
-	shininess: 50,
+	// shininess: 50,
 	map: THREE.ImageUtils.loadTexture('textures/plane.jpg')});
 planeMaterial.side = THREE.DoubleSide;
 
@@ -31,8 +31,22 @@ var shadeMaterial = new THREE.MeshPhongMaterial( {
 var bulbMaterial = new THREE.MeshPhongMaterial( { 
 	color: BULB_COLOR,
 	transparent: true, 
-	opacity: 0.2, 
+	opacity: 0.1,
 	shininess: 250 });
+bulbMaterial.side = THREE.DoubleSide;
+
+var bulbBaseMaterial = new THREE.MeshPhongMaterial( {
+	color: BULB_BASE_COLOR,
+	shininess: 200
+})
+
+var bulbWireMaterial = new THREE.MeshPhongMaterial( {
+	color: BULB_LIGHT_COLOR,
+	shininess: 300,
+	wireframe: true,
+	wireframeLinewidth: 2,
+	metal: true
+})
 
 var objMaterial = new THREE.MeshLambertMaterial( { 
 	color: OBJ_COLOR });
@@ -54,5 +68,3 @@ function colorMultiply(C1, C2) {
 		((C1B*C2B/256));
 	return comb;
 }
-
-console.log(colorMultiply(0xDDDDDD, 0xFFFFFF));

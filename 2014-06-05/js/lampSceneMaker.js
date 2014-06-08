@@ -91,7 +91,7 @@ scene.add(ambientLight);
 
 // add directional light
 var mainLight = makeMainLight(plane);
-mainLight.position.set(PLANE_W/2,-PLANE_H/2,4*ARM_H);
+mainLight.position.set(PLANE_W*2,-PLANE_H*2,4*ARM_H);
 scene.add(mainLight);
 
 // add secondary light
@@ -103,7 +103,7 @@ scene.add(secondaryLight);
 // backlight
 var backLight = mainLight.clone();
 backLight.position.set(0,50,PLANE_H);
-backLight.intensity = SECONDARY_INTENSITY;
+backLight.intensity = BACK_LIGHT_INTENSITY;
 backLight.target = background;
 backLight.castShadow = true;
 scene.add(backLight);
@@ -115,7 +115,17 @@ head.shade.add(target);
 var bulbLight = makeBulbLight(head.bulb, target);
 var bulbLightHelper = new THREE.SpotLightHelper(bulbLight);
 
-var pointLight = makePointLight(head.bulb);
+var backBulbLight1 = makeBackBulbLight(head.bulb, bulbLight, 1, -1);
+var backBulbLight2 = makeBackBulbLight(head.bulb, bulbLight, 1, 1);
+var backBulbLight3 = makeBackBulbLight(head.bulb, bulbLight, -1, 1);
+var backBulbLight4 = makeBackBulbLight(head.bulb, bulbLight, -1, -1);
+
+var backBulbLightHelper1 = new THREE.SpotLightHelper(backBulbLight1);
+var backBulbLightHelper2 = new THREE.SpotLightHelper(backBulbLight2);
+var backBulbLightHelper3 = new THREE.SpotLightHelper(backBulbLight3);
+var backBulbLightHelper4 = new THREE.SpotLightHelper(backBulbLight4);
+
+var pointLight = makePointLight(head.shade);
 var pointLightHelper = new THREE.PointLightHelper(pointLight);
 pointLightHelper.visible = false;
 scene.add(pointLightHelper);
