@@ -7,7 +7,7 @@ var scene = new THREE.Scene();
 // position and point the camera to the center of the scene
 var camera = new THREE.PerspectiveCamera(CAM_ANGLE, ASPECT_RATIO, CAM_NEAR, CAM_FAR);
 camera.up = new THREE.Vector3(0,0,1);
-camera.position.set(0,-PLANE_H, 2*ARM_H);
+camera.position.set(0,-PLANE_H/1.2, 2*ARM_H);
 camera.lookAt(scene.position);
 
 // set renderer
@@ -91,7 +91,7 @@ scene.add(ambientLight);
 
 // add directional light
 var mainLight = makeMainLight(plane);
-mainLight.position.set(PLANE_W*2,-PLANE_H*2,4*ARM_H);
+mainLight.position.set(PLANE_W,-PLANE_H,4*ARM_H);
 scene.add(mainLight);
 
 // add secondary light

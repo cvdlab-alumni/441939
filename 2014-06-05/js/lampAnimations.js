@@ -177,7 +177,7 @@ var mainLightTween = new TWEEN.Tween(mainLight)
 
 var backLightTween = new TWEEN.Tween(backLight)
   .delay(delayL)
-  .to({intensity: SECONDARY_INTENSITY}, sceneL*TL)
+  .to({intensity: BACK_LIGHT_INTENSITY}, sceneL*TL)
   .easing(TWEEN.Easing.Linear.None)
 
 function updateControllers() {

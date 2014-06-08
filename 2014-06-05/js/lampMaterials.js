@@ -1,9 +1,9 @@
 /* ---------- Prepare materials ---------- */
 
 var planeMaterial = new THREE.MeshLambertMaterial({
-	color: PLANE_COLOR, 
-	// shininess: 50,
-	map: THREE.ImageUtils.loadTexture('textures/plane.jpg')});
+	color: PLANE_COLOR,
+	map: THREE.ImageUtils.loadTexture('textures/plane.jpg')
+});
 planeMaterial.side = THREE.DoubleSide;
 
 var baseMaterial = new THREE.MeshPhongMaterial( { 
