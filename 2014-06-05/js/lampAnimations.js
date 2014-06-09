@@ -44,7 +44,7 @@ var objBouncingUpTween3 = new TWEEN.Tween(obj.position)
 
 var iScaleTween2 = new TWEEN.Tween(iText.scale)
   .delay(TB*1.55)
-  .to({y: 0.0}, 0.45*TB)
+  .to({y: 0.001}, 0.45*TB)
   .easing(TWEEN.Easing.Linear.None)
   .chain(objBouncingUpTween3)
 

@@ -42,10 +42,30 @@ function makeArm(r,h) {
 }
 
 function makeBase(r,h) {
-  var baseGeometry = new THREE.CylinderGeometry(r, r, h, 32);
+  var baseOBJ = new THREE.Object3D();
+
+  var points = [];
+  for ( var i = 0; i < 10; i ++ ) {
+    points.push( new THREE.Vector3( r - Math.sin( i * 0.15 ) * r, 0, (i/10)*h ) );
+  }
+  points.push(new THREE.Vector3(0,0,h));
+  points.push(new THREE.Vector3(0,0,0));
+  points.push(new THREE.Vector3(r,0,0));
+  var baseGeometry = new THREE.LatheGeometry( points, 32 );
   var base = new THREE.Mesh(baseGeometry, baseMaterial);
+  base.position.z = h/4;
+
+  var supportGeometry = new THREE.CylinderGeometry(r, r, h/4, 32);
+  var support = new THREE.Mesh(supportGeometry, baseMaterial);
+  support.position.z = h/8;
+  support.rotation.x = -PI/2;
+
+  support.castShadow = true;
   base.castShadow = true;
-  return base;
+  baseOBJ.add(base);
+  baseOBJ.add(support);
+
+  return baseOBJ;
 }
 
 function makeBulb(B) {
@@ -92,17 +112,51 @@ function makeShade(R) {
 }
 
 function makeStick(r,h) {
-  var stickGeometry = new THREE.CylinderGeometry(r,r,h,32);
+  var stickOBJ = new THREE.Object3D();
+
+  var stickGeometry = new THREE.CylinderGeometry(r,r,1.1*h,32);
   var stick = new THREE.Mesh(stickGeometry, stickMaterial);
+  stick.scale.x = 0.8; 
   stick.castShadow = true;
-  return stick;
+  stickOBJ.add(stick);
+
+  return stickOBJ;
 }
 
 function makeJoint(r) {
-  var jointGeometry = new THREE.SphereGeometry(r,32,32);
+  var jointOBJ = new THREE.Object3D();
+
+  var jointGeometry = new THREE.CylinderGeometry(r*1.1,r*1.1,1.1*2*r,32);
   var joint = new THREE.Mesh(jointGeometry, jointMaterial);
+
+  var screwGeometry = new THREE.CylinderGeometry(r/1.4,r/1.4,1.4*2*r,32);
+  var screw = new THREE.Mesh(screwGeometry);
+
+  var screwHoleGeometry = new THREE.BoxGeometry(2*r/1.9,2*r/1.9/8,4*r/1.9);
+  var screwHole1 = new THREE.Mesh(screwHoleGeometry);
+  screwHole1.rotation.x = PI/2;
+  var screwHole2 = screwHole1.clone();
+  screwHole1.position.y = 1.4*r;
+  screwHole2.position.y = -1.4*r;
+
+  // BOOLEAN OPERATION
+  var sc = new ThreeBSP(screw);
+  var h1 = new ThreeBSP(screwHole1);
+  var h2 = new ThreeBSP(screwHole2);
+  var sub = sc.subtract(h1);
+  sub = sub.subtract(h2);
+  screw = sub.toMesh(stickMaterial);
+
+  screw.castShadow = true;
   joint.castShadow = true;
-  return joint;
+
+  joint.rotation.z = PI/2;
+  screw.rotation.z = PI/2;
+
+  jointOBJ.add(joint);
+  jointOBJ.add(screw);
+
+  return jointOBJ;
 }
 
 function makeObj(L) {

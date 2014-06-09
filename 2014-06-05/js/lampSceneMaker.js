@@ -16,7 +16,7 @@ renderer.setClearColor(new THREE.Color(RENDERER_COLOR, 1.0));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.antialias = true;
 renderer.shadowMapEnabled = true;
-renderer.shadowMapType = THREE.PCFSoftShadowMap;
+// renderer.shadowMapType = THREE.PCFSoftShadowMap;
 
 // stats
 var stats = initStats();
@@ -59,7 +59,7 @@ scene.add(iText);
 
 // base
 var base = makeBase(BASE_R,BASE_H);
-center2Origin(BASE_H/2,base);
+// center2Origin(BASE_H/2,base);
 
 // arm
 var arm1 = makeArm(ARM_R,ARM_H);
@@ -85,7 +85,7 @@ scene.add(lamp);
 arm1.rotation.y = 7*PI/4;
 arm1.joint.rotation.x = PI/12;
 arm2.joint.rotation.x = PI/3;
-arm2.rotation.y = 0;
+arm2.stick.rotation.y = 0;
 head.joint.rotation.x = PI/5;
 
 /* ---------- Prepare lights ---------- */
