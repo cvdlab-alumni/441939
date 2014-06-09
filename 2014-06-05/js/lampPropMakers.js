@@ -225,9 +225,8 @@ function makePointLight(obj) {
 }
 
 function makePlane() {
-  var planeGeometry = new THREE.PlaneGeometry(PLANE_W*4,PLANE_H*2,PLANE_W,PLANE_H);
+  var planeGeometry = new THREE.PlaneGeometry(PLANE_W*4,PLANE_H*2,PLANE_W/2,PLANE_H/2);
   var plane = new THREE.Mesh(planeGeometry,planeMaterial);
-  // rotate and translate the plane
   plane.receiveShadow = true;
   return plane;
 }

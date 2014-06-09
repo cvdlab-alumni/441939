@@ -16,7 +16,7 @@ renderer.setClearColor(new THREE.Color(RENDERER_COLOR, 1.0));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.antialias = true;
 renderer.shadowMapEnabled = true;
-// renderer.shadowMapType = THREE.PCFSoftShadowMap;
+renderer.shadowMapType = THREE.PCFSoftShadowMap;
 
 // stats
 var stats = initStats();
